@@ -10,3 +10,7 @@ output "kms_key_arn" {
   description = "KMS key for server side encrypt of terraform state in S3"
   value = aws_kms_key.tfstate_backend.arn
 }
+output "region" {
+  description = "The AWS region where the resources are provisioned"
+  value = data.aws_region.current.name
+}
