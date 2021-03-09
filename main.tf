@@ -46,6 +46,9 @@ resource "aws_s3_bucket" "tfstate_backend" {
   bucket = local.bucket_name
   acl = "private"
   force_destroy = false
+  versioning {
+    enabled = true
+  }
   logging {
     target_bucket = var.log_bucket_name == null ? aws_s3_bucket.tfstate_backend_log[0].id : var.log_bucket_name
     target_prefix = var.log_prefix == null ? local.bucket_name : var.log_prefix
