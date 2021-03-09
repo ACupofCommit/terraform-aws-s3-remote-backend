@@ -7,7 +7,7 @@ provider "aws" {
 }
 
 module "s3-remote-backend" {
-  source = "github.com/ACupofCommit/terraform-aws-s3-remote-backend"
+  source = "../"
   name_prefix = local.prefix
 }
 
@@ -25,4 +25,3 @@ kms_key_id     = "${module.s3-remote-backend.kms_key_arn}"
 dynamodb_table = "${module.s3-remote-backend.dynamodb_table_name}"
 EOF
 }
-
